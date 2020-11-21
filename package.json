@@ -1,0 +1,11 @@
+{
+  "name": "social-url-parse",
+  "version": "1.0.0",
+  "description": "Checking URLs for validity and more.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AXLLLOW",
+  "license": "MIT"
+}
