@@ -2,10 +2,71 @@
   "name": "social-url-parse",
   "version": "1.0.0",
   "description": "Checking URLs for validity and more.",
-  "main": "index.js",
+  "main": "lib",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "create": "node scripts/createSocialNetwork.js",
+    "test": "npm run lint && jest",
+    "lint": "eslint ./ --max-warnings 100 --quiet --report-unused-disable-directives",
+    "fmt": "prettier --write \"lib/*.js\"",
+    "fmt:check": "prettier --check \"lib/*.js\""
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AXLLLOW/social-url-parse.git"
+  },
+  "keywords": [
+    "URL",
+    "parser",
+    "uri",
+    "url",
+    "parse",
+    "query",
+    "string",
+    "querystring",
+    "stringify"
+  ],
   "author": "AXLLLOW",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/AXLLLOW/social-url-parse",
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "tldjs": "^2.3.1",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-comment-annotations": "^0.4.0",
+    "eslint-plugin-filenames": "^1.3.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-testing-library": "^3.10.1",
+    "jest": "^26.6.3",
+    "jest-junit": "^7.0.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "run-p lint && npm run test",
+      "pre-commit": "lint-staged && lerna run --concurrency 4 --stream precommit"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --report-unused-disable-directives",
+      "git add"
+    ],
+    "*.{md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none"
+  }
 }

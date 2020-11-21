@@ -1,0 +1,15 @@
+plugins:
+  - prettier
+  - filenames
+  - jest
+extends:
+  - airbnb-base
+  - prettier
+  - plugin:jest/recommended
+  - ./.eslintrc.common.yml
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+env:
+  node: true
+  jest: true
